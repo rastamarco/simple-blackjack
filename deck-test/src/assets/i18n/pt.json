@@ -1,0 +1,20 @@
+{
+    "PLAY": "Jogar",
+    "PT": "Português",
+    "EN": "Inglês",
+    "ES": "Espanhol",
+    "SELECT_LANGUAGE": "Selecione seu idioma: ",
+    "COMPONENTS": {
+        "LOADING": "Carregando...",
+        "GIVE_CARD": "Dê-me uma Carta !"
+    },
+    "RESTART": "Reiniciar",
+    "LOSE": "Você Perdeu!",
+    "START_GAME": "Click em Jogar para Iniciar Black Jack!",
+    "SCORE": "Pontuação: ",
+    "STOP_GAME": "Parar",
+    "TABLE": "Mesa: ",
+    "WIN": "Você Ganhou!",
+    "CONGRATULATIONS": "Parabéns ! =)",
+    "NOT_TIME": "Não foi dessa vez, tente de novo!"
+}
