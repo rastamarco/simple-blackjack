@@ -1,0 +1,63 @@
+<!-- TOPBAR -->
+<div class="topbar" role="banner">
+  <span class="title">{{ config.appname }} - {{ config.company }}</span>
+</div>
+
+<div class="content" role="main">
+  
+  <div class="language-content">
+    <h5 translate>SELECT_LANGUAGE</h5>
+    <p-dropdown 
+
+      [options]="languages" 
+      [(ngModel)]="selectedLanguage" 
+      optionLabel="name"
+      optionValue="code"
+      [style]="{width: '200px'}"
+      inputId="dropdown-language"
+      outlined
+      (onChange)="selectLanguage($event)">
+    </p-dropdown>
+  </div>
+ 
+  <div class="card-container">
+    <div class="card card-small" (click)="play()">
+      <img src="https://dashboard.snapcraft.io/site_media/appmedia/2023/04/quick-blacljack_icon.png" class="img-blackjack" />
+      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"></svg>
+      <span class="text-play" translate>PLAY</span>
+    </div>
+  </div>
+  <loading-mazza *ngIf="loading"></loading-mazza >
+  <div class="main-content" *ngIf="startBlackJack">
+    <div class="btn-actions">
+      <p-button [label]="btnLabel" (click)="giveCard()" [disabled]="this.totalValue > this.blackJackValue || userStop"></p-button>
+      <p-button *ngIf="cardQty > 0" [style]="{'background-color': 'green'}" class="btn-reset" [label]="btnLabelStop" (click)="parar()" [disabled]="this.totalValue > this.blackJackValue || userStop"></p-button>
+      <p-button [style]="{'background-color': 'red'}" class="btn-reset"  [label]="btnLabelReset" (click)="reset()" *ngIf="this.totalValue > this.blackJackValue || userStop"></p-button>
+    </div>
+    
+    <div class="cards-black-jack" >
+      <div class="list-cards" *ngFor="let card of listCards"> 
+        <img [src]="card.image" class="img-card" />
+      </div>
+    </div>
+    
+    <div class="text-score">
+      <h1 translate>SCORE <h1>{{ totalValue }}</h1></h1>
+      <div class="cards-black-jack" >
+        <h1 translate>TABLE <h1>{{ totalTable }}</h1></h1>
+        <div class="list-cards" *ngFor="let card of listCardsTable"> 
+          <img [src]="card.image" class="img-card" />
+        </div>
+      </div>
+      <!-- <h1 *ngIf="(!userWin && userStop) || this.totalValue > this.blackJackValue" translate style="color:red;font-size: 40px;">LOSE</h1>
+      <h1 *ngIf="userWin && userStop" translate style="color:green;font-size: 40px;">WIN</h1> -->
+    </div>
+    
+  </div>
+  <div class="main-content-start" *ngIf="!startBlackJack">
+    <h1 translate>START_GAME</h1>
+  </div>
+
+</div>
+
+<router-outlet></router-outlet>
